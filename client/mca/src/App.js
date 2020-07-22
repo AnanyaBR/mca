@@ -17,14 +17,14 @@ function App(props) {
       <Link to="/">Home</Link> |
       <Link to='/Articles'>Articles</Link> | 
 
-      <Link to ='/Register'>Register</Link>/
-      <Link to ='/Login'>Login</Link>
+      <Link to ='/users/register'>Register</Link>/
+      <Link to ='/users/login'>Login</Link>
 
       <Switch>
       <Route path="/" component={Home} exact={true}/>
       <Route path="/Articles"  component={Article} />
-      <Route path="/register"  component={Register}/>
-      <Route path="/LOgin" component={Login}/>
+      <Route path="/users/register"  component={Register}/>
+      <Route path="/users/login" component={Login}/>
       </Switch>
       
     </div>

@@ -1,11 +1,20 @@
-import axios from 'axios'
+import axios from '../config/axios'
 
-export const startRegisterUser=(formData)=>{
+export const startRegisterUser=(formData, redirect)=>{
     return(dispatch)=>{
         //console.log('action generator', formData)
         axios.post('/users/register', formData)
         .then((response)=>{
-            console.log(response.data)
+            if(response.data.hasOwnProperty('errors')){
+                alert(response.data.message)
+            }else{
+                alert('registered successfully')
+                redirect()
+            }
+            //console.log(response.data)
+        })
+        .catch((err)=>{
+            console.log(err)
         })
     }
 }
