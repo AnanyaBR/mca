@@ -58,4 +58,11 @@ usersController.account=(req, res)=>{
     res.json(req.user)
 }
 
+usersController.logout=(req, res)=>{
+    
+    res.json({
+        notice:'Logged Out Successfully'
+    })
+}
+
 module.exports= usersController

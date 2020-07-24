@@ -1,4 +1,6 @@
 import React from 'react'
+import {connect} from 'react-redux'
+import {startLoginUser} from '../../actions/userAction'
 
 class Login extends React.Component{
     constructor(){
@@ -23,12 +25,26 @@ class Login extends React.Component{
         }))
     }
 
+    handleSubmit=(e)=>{
+        e.preventDefault()
+        const formData = {
+            email:this.state.email_or_mob,
+            password:this.state.password
+        }
+        //console.log(formData)
+
+        const redirect=()=>{
+            return this.props.history.push('/')
+        }
+        this.props.dispatch(startLoginUser(formData, redirect))
+    }
+
     render(){
         return(
             <div className="row">
                 <div className="col-md-5 offset-md-4">
                 <h3>Login Here</h3>
-                <form >
+                <form onSubmit={this.handleSubmit}>
 
                     <div className="form-group">
                     <label htmlFor="email_or_mobile">Email/Mobile No</label>
@@ -57,4 +73,4 @@ class Login extends React.Component{
     }
 }
 
-export default Login
+export default connect()(Login)
